@@ -12,7 +12,7 @@ It contains packages for:
 
 > We need help !
 
-If you want to make a new highlighter or improve one of the existents, please clone the [repo](https://github.com/yosbelms/cor-ide-support), make your contribution, then make a pull request. You may want to know about [Cor](http://yosbelms.github.io/cor) lexic. There is some basic info below.
+If you want to make a new highlighter or improve one of the existents, please clone the [repo](https://github.com/yosbelms/cor-ide-support), add your new highlighter or improve one of the existing, then make a pull request. There is some useful info below to start making your favorite IDE/Text Editor highlighter of [Cor](http://yosbelms.github.io/cor) syntax.
 
 ## Keywords
 
@@ -70,11 +70,17 @@ func foo() {
 
 ## Strings
 
-Begins and ends with `'` char
+Begins and ends with `'` char.
 
 Example:
 ```
 myStr = 'Hello World !'
 ```
+Special characters can be escaped by preceding those characters with `\`.
 
-For complete lexic reference see the lexer at https://raw.githubusercontent.com/yosbelms/cor/master/src/bnf/cor.l
+Escape example:
+```
+myStr = 'I\'am a escaped text'
+```
+
+> This basic documentation is enough to make a simple *[Cor](http://yosbelms.github.io/cor) syntax colorizer*. Although if you want to get deep into [Cor](http://yosbelms.github.io/cor) lexic see the lexer at https://raw.githubusercontent.com/yosbelms/cor/master/src/bnf/cor.l for reference.
