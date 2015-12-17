@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd">
+<!-- Author: Yosbel Marin <yosbelms@gmail.com> //-->
+<language name="Cor" version="1.0" kateversion="2.4" section="Scripts" extensions="*.cor"
+          mimetype="text/x-cor;application/x-cor" indenter="cstyle"
+          author="Yosbel Marín (yosbelms@gmail.com)" license="MIT">
+  <highlighting>
+    <list name="keywords">
+        <item> use </item>
+        <item> class </item>
+        <item> if </item>
+        <item> else </item>
+        <item> for </item>
+        <item> in </item>
+        <item> continue </item>
+        <item> break </item>
+        <item> try </item>
+        <item> catch </item>
+        <item> finally </item>
+        <item> switch </item>
+        <item> case </item>
+		<item> default </item>
+        <item> func </item>
+        <item> return </item>
+        <item> true </item>
+        <item> false </item>
+        <item> nil </item>
+        <item> throw </item>
+    </list>
+    <list name="functions">
+        <item> super </item>
+        </list>
+    <list name="objects">
+        <item> me </item>
+    </list>
+    <contexts>
+      <context attribute="Normal Text" lineEndContext="#stay" name="Normal">
+	    <DetectSpaces/>
+        <StringDetect attribute="Region Marker" context="region_marker" String="//BEGIN" beginRegion="Region1"/>
+        <StringDetect attribute="Region Marker" context="region_marker" String="//END" endRegion="Region1"/>
+
+        <RegExpr attribute="Number1" context="#stay" String="0x[0-9a-fA-F]+" />
+        <RegExpr attribute="Number2" context="#stay" String="[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)?" />
+
+        <RegExpr attribute="Literal Constructor" context="#stay" String="@\s*([a-zA-Z\$_][a-zA-Z\$_\.]*)?" />
+
+        <keyword attribute="Keyword"  context="#stay" String="keywords" />
+        <keyword attribute="Function" context="#stay" String="functions" />
+        <keyword attribute="Objects"  context="#stay" String="objects" />
+
+	    <DetectIdentifier/>
+        <DetectChar   attribute="String Char" context="String" char="'"/>
+        <Detect2Chars attribute="Comment"     context="Comment" char="/" char1="/"/>
+        <StringDetect attribute="Comment"     context="Multi/inline Comment" String="---" beginRegion="Comment"/>
+        <RegExpr      attribute="Normal Text" context="(Internal regex catch)" String="[=?:]" />
+        <RegExpr      attribute="Normal Text" context="(Internal regex catch)" String="\(" />
+        <DetectChar   attribute="Symbol"      context="#stay" char="{" beginRegion="Brace1" />
+        <DetectChar   attribute="Symbol"      context="#stay" char="}" endRegion="Brace1" />
+        <AnyChar      attribute="Symbol"      context="#stay" String=":!%&amp;+,-/.*&lt;=&gt;?[]|~^&#59;"/>
+      </context>
+
+      <context attribute="String Char" lineEndContext="#stay" name="String">
+        <DetectIdentifier/>
+        <HlCStringChar attribute="String Char" context="#stay"/>
+        <LineContinue  attribute="String"      context="#stay"/>
+        <DetectChar    attribute="String Char" context="#pop" char="'"/>
+      </context>
+
+      <context attribute="Comment" lineEndContext="#pop" name="Comment">
+        <DetectSpaces />
+        <IncludeRules context="##Alerts" />
+        <DetectIdentifier />
+      </context>
+
+      <context attribute="Comment" lineEndContext="#stay" name="Multi/inline Comment">
+        <IncludeRules context="##Alerts" />
+        <StringDetect attribute="Comment" context="#pop" String="---" endRegion="Comment"/>
+      </context>
+     
+      <context attribute="Normal Text" lineEndContext="#stay" name="(Internal regex catch)" fallthrough="true" fallthroughContext="#pop">
+        <RegExpr      attribute="Normal Text"        context="#stay" String="\s*" />
+        <Detect2Chars attribute="Comment"            context="Comment" char="/" char1="/" />
+        <StringDetect attribute="Comment"     context="Multi/inline Comment" String="---"/>
+      </context>      
+
+      <context name="region_marker" attribute="Region Marker" lineEndContext="#pop" >
+    	<DetectIdentifier />
+    	<DetectSpaces />
+      </context>
+    </contexts>
+
+    <itemDatas>
+      <itemData name="Normal Text"   defStyleNum="dsNormal"   spellChecking="false"/>
+      <itemData name="Keyword"       defStyleNum="dsKeyword"  spellChecking="false"/>
+      <itemData name="Function"      defStyleNum="dsFunction" spellChecking="false"/>
+      <itemData name="Objects"       defStyleNum="dsNormal"   bold="1" italic="0" spellChecking="false"/>
+      <itemData name="Number1"       defStyleNum="dsChar"     spellChecking="false"/>
+      <itemData name="Number2"       defStyleNum="dsDecimal"  spellChecking="false"/>
+      <itemData name="Char"          defStyleNum="dsDecimal"  spellChecking="false"/>
+      <itemData name="String"        defStyleNum="dsString"/>
+      <itemData name="String Char"   defStyleNum="dsChar"     spellChecking="false"/>
+      <itemData name="Comment"       defStyleNum="dsComment"  color="#999999"/>
+      <itemData name="Symbol"        defStyleNum="dsNormal"   spellChecking="false"/>
+      <itemData name="Literal Constructor"        defStyleNum="dsNormal" spellChecking="true"/>
+      <itemData name="Pattern Internal Operator" defStyleNum="dsDecimal" spellChecking="false"/>
+      <itemData name="Pattern Character Class"   defStyleNum="dsBaseN" spellChecking="false"/>
+      <itemData name="Region Marker"             defStyleNum="dsRegionMarker" spellChecking="false"/>
+    </itemDatas>
+
+  </highlighting>
+
+  <general>
+    <comments>
+      <comment name="singleLine" start="//" />
+      <comment name="multiLine" start="---" end="---" />
+    </comments>
+    <keywords casesensitive="1" />
+  </general>
+
+</language>
