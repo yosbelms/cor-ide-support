@@ -10,9 +10,7 @@ It contains packages for:
 
 # Contributing
 
-> We need help !
-
-If you want to make a new highlighter or improve one of the existents, please clone the [repo](https://github.com/yosbelms/cor-ide-support), add your new highlighter or improve one of the existing, then make a pull request. There is some useful info below to start making your favorite IDE/Text Editor highlighter of [Cor](http://yosbelms.github.io/cor) syntax.
+You can collaborate by making new a highlighter or improving an existing, please clone the [repo](https://github.com/yosbelms/cor-ide-support), add your contribution and make a pull request. There is some useful lists below to start getting into [Cor](http://yosbelms.github.io/cor) syntax.
 
 ## Keywords
 
@@ -31,15 +29,17 @@ If you want to make a new highlighter or improve one of the existents, please cl
 * `default`
 * `continue`
 * `break`
+* `catch`
+
+### Builtin Functions
+
+* `super`
+* `error`
+
+### Literals
+
 * `true`
 * `false`
-
-### Experimental keywords
-
-* `try`
-* `catch`
-* `finally`
-* `throw`
 
 ## Comments
 ### Multiline comment
@@ -83,4 +83,4 @@ Escape example:
 myStr = 'I\'am a escaped text'
 ```
 
-> This basic documentation is enough to make a simple *[Cor](http://yosbelms.github.io/cor) syntax colorizer*. Although if you want to get deep into [Cor](http://yosbelms.github.io/cor) lexic see the lexer at https://raw.githubusercontent.com/yosbelms/cor/master/src/bnf/cor.l for reference.
+> This basic documentation should be enough to make a simple *[Cor](http://yosbelms.github.io/cor) syntax colorizer*. Although if you want to get deep into [Cor](http://yosbelms.github.io/cor) lexic see the lexer at https://raw.githubusercontent.com/yosbelms/cor/master/src/bnf/cor.l for reference.
